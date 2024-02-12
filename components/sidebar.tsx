@@ -6,6 +6,7 @@ import { Montserrat } from "next/font/google";
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const montserrat = Montserrat({
     weight:"600",
@@ -58,6 +59,7 @@ const routes = [
 ];
 
 const Sidebar = () => {
+    const pathname = usePathname();
     return (
         <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
             <div className="px-3 py-5 flex-1">
