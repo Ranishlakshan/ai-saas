@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { UserButton } from "@clerk/nextjs";
-import { ArrowRight, MessageSquare } from "lucide-react";
+import { ArrowRight, CodeIcon, ImageIcon, MessageSquare, MusicIcon, VideoIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const tools = [
   {
@@ -13,9 +14,35 @@ const tools = [
     href:"/conversation",
     color:"text-sky-500"
   },
+  {
+    label:"Image Generator",
+    icon: ImageIcon,
+    href:"/image",
+    color:"text-sky-500"
+},
+{
+    label:"Video Generator",
+    icon: VideoIcon,
+    href:"/video",
+    color:"text-sky-500"
+},
+{
+    label:"Music Generator",
+    icon: MusicIcon,
+    href:"/music",
+    color:"text-sky-500"
+},
+{
+    label:"Code Generator",
+    icon: CodeIcon,
+    href:"/code",
+    color:"text-sky-500"
+}
 ]
 
 const DashboardPage = () => {
+const router = useRouter();
+
   return (
     <div>
       <div className="mb-8 space-y-4">
@@ -29,7 +56,8 @@ const DashboardPage = () => {
       <div className="px-4 md:px-20 lg:px-32 space-y-4">
         {
           tools.map( (tool) => (
-            <Card
+            <Card 
+            onClick={() => router.push(tool.href) }
              key={tool.href}
              className="p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer"
             >
